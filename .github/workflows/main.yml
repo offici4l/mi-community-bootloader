@@ -1,0 +1,30 @@
+name: Run Python Script
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt  # Install any dependencies if needed
+
+      - name: Run the Python script
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.SEND_DATA_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.T_CHAT_ID }}
+        run: |
+          python micommunity.py  
