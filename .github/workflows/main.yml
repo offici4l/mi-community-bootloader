@@ -24,7 +24,7 @@ jobs:
 
       - name: Run the Python script
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.SEND_DATA_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.T_CHAT_ID }}
+          SEND_DATA_TOKEN: ${{ secrets.SEND_DATA_TOKEN }}
+          T_CHAT_ID: ${{ secrets.T_CHAT_ID }}
         run: |
           python micommunity.py  
